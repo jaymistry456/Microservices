@@ -1,0 +1,14 @@
+allprojects {
+    group = "com.example"
+    version = "0.0.1-SNAPSHOT"
+}
+
+subprojects {
+    apply plugin: "java"
+
+    java {
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(24)
+        }
+    }
+}
