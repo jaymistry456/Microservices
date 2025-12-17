@@ -13,5 +13,6 @@ public class AuditConfig {
     public AuditorAware<String> auditorAware() {
         return () -> Optional.of("SYSTEM");
     }
+
 }
 

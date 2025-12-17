@@ -10,6 +10,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Customer extends BaseEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "customer_id")
@@ -23,4 +24,5 @@ public class Customer extends BaseEntity {
 
     @Column(name = "mobile_number")
     private String mobileNumber;
+
 }

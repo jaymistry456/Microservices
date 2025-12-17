@@ -12,6 +12,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @AllArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
 public class Accounts extends BaseEntity {
+
     @Column(name = "customer_id")
     private Long customerId;
 
@@ -24,4 +25,5 @@ public class Accounts extends BaseEntity {
 
     @Column(name = "branch_address")
     private String branchAddress;
+
 }

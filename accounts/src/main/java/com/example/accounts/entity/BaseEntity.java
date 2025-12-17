@@ -17,6 +17,7 @@ import java.time.LocalDateTime;
 @Setter
 @ToString
 public class BaseEntity {
+
     @CreatedDate
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
@@ -32,4 +33,5 @@ public class BaseEntity {
     @LastModifiedBy
     @Column(name = "update_by", insertable = false)
     private String modifiedBy;
+
 }

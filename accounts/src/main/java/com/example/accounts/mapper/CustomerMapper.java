@@ -4,6 +4,7 @@ import com.example.accounts.dto.CustomerDto;
 import com.example.accounts.entity.Customer;
 
 public class CustomerMapper {
+
     // map Customer Entity to CustomerDto
     public static CustomerDto mapToCustomerDto(Customer customer, CustomerDto customerDto) {
         customerDto.setName(customer.getName());
@@ -19,4 +20,5 @@ public class CustomerMapper {
         customer.setMobileNumber(customerDto.getMobileNumber());
         return customer;
     }
+
 }
