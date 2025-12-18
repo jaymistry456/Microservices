@@ -1,15 +1,15 @@
-package com.example.accounts.dto;
+package com.example.cards.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
-@Schema(
-        name = "Response",
-        description = "Schema to hold successful response information"
-)
 @Data
 @AllArgsConstructor
+@Schema(
+        name = "Response",
+        description = "Schema to hold successful reponse information"
+)
 public class ResponseDto {
 
     @Schema(
@@ -18,7 +18,7 @@ public class ResponseDto {
     private String statusCode;
 
     @Schema(
-            description = "Error message for the successful response"
+            description = "Status message for the successful response"
     )
     private String statusMessage;
 

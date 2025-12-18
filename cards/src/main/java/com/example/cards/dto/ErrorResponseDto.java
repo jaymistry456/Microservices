@@ -1,4 +1,4 @@
-package com.example.accounts.dto;
+package com.example.cards.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
@@ -7,12 +7,12 @@ import org.springframework.http.HttpStatus;
 
 import java.time.LocalDateTime;
 
+@Data
+@AllArgsConstructor
 @Schema(
         name = "ErrorResponse",
         description = "Schema to hold error response information"
 )
-@Data
-@AllArgsConstructor
 public class ErrorResponseDto {
 
     @Schema(

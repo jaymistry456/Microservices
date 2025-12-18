@@ -1,4 +1,4 @@
-package com.example.accounts.entity;
+package com.example.cards.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;
@@ -30,11 +30,11 @@ public class BaseEntity {
     private String createdBy;
 
     @LastModifiedDate
-    @Column(name = "update_at", insertable = false)
+    @Column(name = "updated_at", insertable = false)
     private LocalDateTime updatedAt;
 
     @LastModifiedBy
-    @Column(name = "update_by", insertable = false)
-    private String modifiedBy;
+    @Column(name = "updated_by", insertable = false)
+    private String updatedBy;
 
 }

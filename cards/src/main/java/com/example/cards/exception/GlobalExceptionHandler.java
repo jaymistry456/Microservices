@@ -1,6 +1,6 @@
-package com.example.accounts.exception;
+package com.example.cards.exception;
 
-import com.example.accounts.dto.ErrorResponseDto;
+import com.example.cards.dto.ErrorResponseDto;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -19,8 +19,8 @@ import java.util.Map;
 @RestControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler(CustomerAlreadyExistsException.class)
-    public ResponseEntity<ErrorResponseDto> handleCustomerAlreadyExistsException(CustomerAlreadyExistsException exception, WebRequest webRequest) {
+    @ExceptionHandler(CardAlreadyExistsException.class)
+    public ResponseEntity<ErrorResponseDto> handleCardAlreadyExistsException(CardAlreadyExistsException exception, WebRequest webRequest) {
         return new ResponseEntity<>(
                 new ErrorResponseDto(
                         webRequest.getDescription(false),
@@ -68,3 +68,4 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
 }
+

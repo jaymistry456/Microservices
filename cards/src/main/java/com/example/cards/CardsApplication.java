@@ -1,4 +1,4 @@
-package com.example.accounts;
+package com.example.cards;
 
 import io.swagger.v3.oas.annotations.ExternalDocumentation;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
@@ -13,8 +13,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 @EnableJpaAuditing
 @OpenAPIDefinition(
         info = @Info(
-                title = "Accounts Microservice OpenAPI Documentation",
-                description = "Accounts Microservice OpenAPI Documentation",
+                title = "Cards Microservice OpenAPI Documentation",
+                description = "Cards Microservice OpenAPI Documentation",
                 version = "v1",
                 contact = @Contact(
                         name = "John Doe",
@@ -27,14 +27,14 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
                 )
         ),
         externalDocs = @ExternalDocumentation(
-                description = "Accounts Microservice OpenAPI Documentation",
-                url = "http://localhost:8080/swagger-ui/index.html"
+                description = "Cards Microservice OpenAPI Documentation",
+                url = "http://localhost:9000/swagger-ui/index.html"
         )
 )
-public class AccountsApplication {
+public class CardsApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(AccountsApplication.class, args);
-    }
+	public static void main(String[] args) {
+		SpringApplication.run(CardsApplication.class, args);
+	}
 
 }
