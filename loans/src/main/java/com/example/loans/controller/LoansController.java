@@ -1,10 +1,10 @@
-package com.example.cards.controller;
+package com.example.loans.controller;
 
-import com.example.cards.constants.CardsConstants;
-import com.example.cards.dto.CardsDto;
-import com.example.cards.dto.ErrorResponseDto;
-import com.example.cards.dto.ResponseDto;
-import com.example.cards.service.ICardsService;
+import com.example.loans.constants.LoansConstants;
+import com.example.loans.dto.ErrorResponseDto;
+import com.example.loans.dto.LoansDto;
+import com.example.loans.dto.ResponseDto;
+import com.example.loans.service.ILoansService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -21,34 +21,34 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @Tag(
-        name = "CRUD REST APIs for Cards Microservice",
-        description = "CRUD REST APIs to CREATE, READ, UPDATE and DELETE Card Details"
+        name = "CRUD REST APIs for Loans Microservice",
+        description = "CRUD REST APIs to CREATE, READ, UPDATE and DELETE Loan Details"
 )
 @RestController
-@RequestMapping(path = "/api", produces = {MediaType.APPLICATION_JSON_VALUE})
 @AllArgsConstructor
 @Validated
-public class CardsController {
+@RequestMapping(path = "/api", produces = {MediaType.APPLICATION_JSON_VALUE})
+public class LoansController {
 
-    private ICardsService cardsService;
+    private ILoansService loansService;
 
     @Operation(
-            summary = "CREATE Card REST API",
-            description = "REST API to create new Card"
+            summary = "CREATE Loan REST API",
+            description = "REST API to create new Loan"
     )
     @ApiResponse(
             responseCode = "201",
             description = "Http status CREATED"
     )
     @PostMapping(path = "/create")
-    public ResponseEntity<ResponseDto> createCard(@Pattern(regexp = "^\\d{10}$", message = "Mobile number must be exactly 10 digits long.") @RequestParam String mobileNumber) {
-        cardsService.createCard(mobileNumber);
-        return ResponseEntity.status(HttpStatus.CREATED).body(new ResponseDto(CardsConstants.STATUS_201, CardsConstants.MESSAGE_201));
+    public ResponseEntity<ResponseDto> createLoan(@Pattern(regexp = "^\\d{10}$", message = "Mobile number must be exactly 10 digits long.") @RequestParam String mobileNumber) {
+        loansService.createLoan(mobileNumber);
+        return ResponseEntity.status(HttpStatus.CREATED).body(new ResponseDto(LoansConstants.STATUS_201, LoansConstants.MESSAGE_201));
     }
 
     @Operation(
-            summary = "Fetch Card Details REST API",
-            description = "REST API to fetch Card details based on a mobile number"
+            summary = "Fetch Loan Details REST API",
+            description = "REST API to fetch Loan details based on a mobile number"
     )
     @ApiResponses({
             @ApiResponse(
@@ -64,14 +64,14 @@ public class CardsController {
             )
     })
     @GetMapping(path = "/fetch")
-    public ResponseEntity<CardsDto> fetchCardDetails(@Pattern(regexp = "^\\d{10}$", message = "Mobile number must be exactly 10 digits long.") @RequestParam String mobileNumber) {
-        CardsDto cardsDto = cardsService.fetchCard(mobileNumber);
-        return ResponseEntity.status(HttpStatus.OK).body(cardsDto);
+    public ResponseEntity<LoansDto> fetchLoan(@Pattern(regexp = "^\\d{10}$", message = "Mobile number must be exactly 10 digits long.") @RequestParam String mobileNumber) {
+        LoansDto loansDto = loansService.fetchLoan(mobileNumber);
+        return ResponseEntity.status(HttpStatus.OK).body(loansDto);
     }
 
     @Operation(
-            summary = "Update Card Details REST API",
-            description = "REST API to update Card details"
+            summary = "Update Loan Details REST API",
+            description = "REST API to update Loan details"
     )
     @ApiResponses({
             @ApiResponse(
@@ -91,18 +91,18 @@ public class CardsController {
             )
     })
     @PutMapping(path = "/update")
-    public ResponseEntity<ResponseDto> updateCardDetails(@Valid @RequestBody CardsDto cardsDto) {
-        if(cardsService.updateCard(cardsDto)) {
-            return ResponseEntity.status(HttpStatus.OK).body(new ResponseDto(CardsConstants.STATUS_200, CardsConstants.MESSAGE_200));
+    public ResponseEntity<ResponseDto> updateLoan(@Valid @RequestBody LoansDto loansDto) {
+        if(loansService.updateLoan(loansDto)) {
+            return ResponseEntity.status(HttpStatus.OK).body(new ResponseDto(LoansConstants.STATUS_200, LoansConstants.MESSAGE_200));
         }
         else {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ResponseDto(CardsConstants.STATUS_500, CardsConstants.MESSAGE_500));
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ResponseDto(LoansConstants.STATUS_500, LoansConstants.MESSAGE_500));
         }
     }
 
     @Operation(
-            summary = "Delete Card Details REST API",
-            description = "REST API to delete Card details based on a mobile number"
+            summary = "Delete Loan Details REST API",
+            description = "REST API to delete Loan details based on a mobile number"
     )
     @ApiResponses({
             @ApiResponse(
@@ -122,12 +122,12 @@ public class CardsController {
             )
     })
     @DeleteMapping(path = "/delete")
-    public ResponseEntity<ResponseDto> deleteCard(@Pattern(regexp = "^\\d{10}$", message = "Mobile number must be exactly 10 digits long.") @RequestParam String mobileNumber) {
-        if(cardsService.deleteCard(mobileNumber)) {
-            return ResponseEntity.status(HttpStatus.OK).body(new ResponseDto(CardsConstants.STATUS_200, CardsConstants.MESSAGE_200));
+    public ResponseEntity<ResponseDto> deleteLoan(@Pattern(regexp = "^\\d{10}$", message = "Mobile number must be exactly 10 digits long.") @RequestParam String mobileNumber) {
+        if(loansService.deleteLoan(mobileNumber)) {
+            return ResponseEntity.status(HttpStatus.OK).body(new ResponseDto(LoansConstants.STATUS_200, LoansConstants.MESSAGE_200));
         }
         else {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ResponseDto(CardsConstants.STATUS_500, CardsConstants.MESSAGE_500));
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new ResponseDto(LoansConstants.STATUS_500, LoansConstants.MESSAGE_500));
         }
     }
 
