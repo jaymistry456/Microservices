@@ -6,7 +6,7 @@ plugins {
 
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
-description = 'Service Discovery Agent for Microservices'
+description = 'Gateway Server for Microservices'
 
 java {
 	toolchain {
@@ -22,17 +22,14 @@ ext {
 	set('springCloudVersion', "2025.1.0")
 }
 
-dependencyManagement {
-    imports {
-        mavenBom "org.springframework.cloud:spring-cloud-dependencies:2025.1.0"
-    }
-}
-
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.cloud:spring-cloud-starter-config'
-	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-server'
+	implementation 'org.springframework.cloud:spring-cloud-starter-gateway-server-webflux'
+	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	testImplementation 'org.springframework.boot:spring-boot-starter-actuator-test'
+	testImplementation 'io.projectreactor:reactor-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
