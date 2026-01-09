@@ -287,6 +287,13 @@ services:
       file: common-config.yml
       service: network-deploy-service
   
+  message:
+    image: "jaymistry181027/message-service:latest"
+    container_name: message-microservice
+    extends:
+      file: common-config.yml
+      service: microservice-base-config
+  
   configserver:
     image: jaymistry181027/configserver-service:latest
     container_name: "configserver-microservice"
