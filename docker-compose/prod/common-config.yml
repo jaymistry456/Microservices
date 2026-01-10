@@ -22,12 +22,15 @@ services:
     depends_on:
       rabbit:
         condition: service_healthy
+      kafka:
+        condition: service_healthy
     deploy:
       resources:
         limits:
           memory: 700m
     environment:
       SPRING_RABBITMQ_HOST: "rabbit"
+      SPRING_CLOUD_STREAM_KAFKA_BINDER_BROKERS: "kafka:9092"
     
   microservice-configserver-config:
     extends:
@@ -36,7 +39,7 @@ services:
       configserver:
         condition: service_healthy
     environment:
-      SPRING_PROFILES_ACTIVE: prod
+      SPRING_PROFILES_ACTIVE: default
       SPRING_CONFIG_IMPORT: configserver:http://configserver:8071/
 
   microservice-eurekaserver-config:
